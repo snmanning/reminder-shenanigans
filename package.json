@@ -1,0 +1,19 @@
+{
+  "name": "reminder-shenanigans",
+  "version": "1.0.0",
+  "description": "This is a CLI reminder tool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snmanning/reminder-shenanigans.git"
+  },
+  "author": "Sarah Manning",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snmanning/reminder-shenanigans/issues"
+  },
+  "homepage": "https://github.com/snmanning/reminder-shenanigans#readme"
+}
