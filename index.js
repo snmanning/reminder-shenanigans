@@ -2,8 +2,9 @@
 const fs = require('fs'); // this tells node that we need this module (set of functions and attributes)
 console.log("Welcome to remindme");
 const reminderFile = "reminders.txt";
-const today = new Date();
-const date = today.toDateString();
+//const today = new Date();
+//const date = today.toDateString();
+const date = "date-testing.js";
 
 //fs.unlinkSync(reminderFile);
 
@@ -71,16 +72,15 @@ function list() {
 function add(newItem) {
     console.log('Ammending a new item to your list...');
     const lines = fs.readFileSync(reminderFile, 'utf8').split(`\n`);
-    /*const parsedLines = lines.map(line => line.split('|'));
-    //parsedLines.push([newItem, new Date()]);
-    const newLine = [newItem, today.toDateString()];
+    const parsedLines = lines.map(line => line.split('|'));
+        //parsedLines.push([newItem, new Date()]);
+    const newLine = [newItem, date];
     const withAddition = parsedLines.concat(newLine);
-    */
-   //fs.unlinkSync(reminderFile);
-    //const outputLines = withAddition.map(line => {
-    const outputLines = lines.map(line => {
+    fs.unlinkSync(reminderFile);
+    const outputLines = withAddition.map(line => {
+    //const outputLines = lines.map(line => {
     const reminder = line[0];
-        const date = today.toDateString()[1];
+        //const date = new Date().toDateString()[1];
         return `- ${reminder} | ${date}`;
     });
     const output = outputLines.join(`\n`);
