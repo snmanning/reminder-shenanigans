@@ -1,7 +1,8 @@
 const fs = require('fs'); // this tells node that we need this module (set of functions and attributes)
 console.log("Welcome to remindme");
 const reminderFile = "reminders.txt";
-const date = new Date().toDateString();
+const today = new Date();
+const date = today.toDateString();
 
 //fs.unlinkSync(reminderFile);
 
@@ -24,6 +25,6 @@ const dates = [
 for(let i = 0; i < reminders.length; i += 1) {
              const reminder = reminders[i];
              const date = dates[i];
-             const line = `${reminder}|${date}\n`; //This data is written to a file, kept-stored-read by a computer. No spaces.
+             const line = `- ${reminder}  |  ${date}\n`; //This data is written to a file, kept-stored-read by a computer. No spaces.
             fs.appendFileSync(reminderFile, line);
             }
