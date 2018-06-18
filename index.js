@@ -76,9 +76,9 @@ function add(newItem) {
     const newLine = [newItem, today.toDateString()];
     const withAddition = parsedLines.concat(newLine);
     */
-   fs.unlinkSync(reminderFile);
+   //fs.unlinkSync(reminderFile);
     //const outputLines = withAddition.map(line => {
-      const outputLines = lines.map(line => {
+    const outputLines = lines.map(line => {
     const reminder = line[0];
         const date = today.toDateString()[1];
         return `- ${reminder} | ${date}`;
