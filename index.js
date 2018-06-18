@@ -2,7 +2,8 @@
 const fs = require('fs'); // this tells node that we need this module (set of functions and attributes)
 console.log("Welcome to remindme");
 const reminderFile = "reminders.txt";
-const date = new Date().toDateString();
+const today = new Date();
+const date = today.toDateString();
 
 //fs.unlinkSync(reminderFile);
 
@@ -37,6 +38,9 @@ else if(subcommand === 'add') {
     }
 else {
     help();
+    function help() {
+        console.log('Unable to process the request. Please try again.');
+        }
     }
 
 console.log("Ou fin! :)");
@@ -59,7 +63,7 @@ function list() {
         const date = parsedLine[1];
         return `${reminder}    Due: ${date}`; //data presented to a person can be spaced. 
                                                 //It makes it easier to read
-    })
+    });
     const output = humanFriendlyLines.join(`\n`);
         console.log(output);
 }
@@ -67,30 +71,26 @@ function list() {
 function add(newItem) {
     console.log('Ammending a new item to your list...');
     const lines = fs.readFileSync(reminderFile, 'utf8').split(`\n`);
-    const parsedLines = lines.map(line => line.split('|'));
+    /*const parsedLines = lines.map(line => line.split('|'));
     //parsedLines.push([newItem, new Date()]);
-    const newLine = [newItem, new Date().toDateString()];
+    const newLine = [newItem, today.toDateString()];
     const withAddition = parsedLines.concat(newLine);
-    fs.unlinkSync(reminderFile);
-    const outputLines = withAddition.map(line => {
-        const reminder = line[0];
-        const date = new Date().toDateString()[1];
+    */
+   fs.unlinkSync(reminderFile);
+    //const outputLines = withAddition.map(line => {
+      const outputLines = lines.map(line => {
+    const reminder = line[0];
+        const date = today.toDateString()[1];
         return `- ${reminder} | ${date}`;
     });
     const output = outputLines.join(`\n`);
     fs.appendFileSync(reminderFile, output);
+}
 
         //for loop
         /*for(let i = 0; i < reminders.length; i += 1) {
              const reminder = reminders[i];
              const date = dates[i];
              const line = `${reminder}|${date}\n`; //This data is written to a file, kept-stored-read by a computer. No spaces.
-            fs.appendFileSync(reminderFile, line);
-            }
-        
-}
-*/
-function help() {
-   console.log('I cannot complete this request, please try again. :(');
-};
-}
+            fs.appendFileSync(reminderFile, line);}
+        */
