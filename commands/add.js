@@ -1,8 +1,7 @@
 const fs = require('fs');
 const ReminderList = require('../models/ReminderList');
 const Reminder = require('../models/Reminder');
-const config = require('../config');
-const reminderFile = config.reminderFile;
+const { reminderFile } = require('../config');
 
 function add(newItem) {
     console.log('Ammending a new item to your list...');
