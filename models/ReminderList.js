@@ -4,28 +4,27 @@ const Reminder = require('./Reminder');
 class ReminderList {
     constructor(filepath) {
         this.filepath = filepath;
-        const lines = fs.readFileSync(this.filepath, 'utf8').split(`\n`);
-        const parsedLine = lines.map(line => line.split("|"));
-        const humanFriendlyLines = parsedLine.map(parsedLine => {
-        const reminder = new Reminder(parsedLine[0], parsedLine[1]);
-        return reminder;
-            });
-        this.reminders = humanFriendlyLines;
-    }
+        this.reminders = fs.readFileSync(this.filepath, 'utf8')
+                            .split(`\n`)
+                            .map((line) => line.split("|"))
+                            .map((parsedLine) => new Reminder(parsedLine[0], parsedLine[1]));
+        }
 
     add(reminder) {
         this.reminders.push(reminder);
     }
 
     toFileOutput() {
-        const fileString = this.reminders.map((reminder) => reminder.toFileString());
-        const output = fileString.join(`\n`);
+        const output = this.reminders
+                        .map((reminder) => reminder.toFileString())
+                        .join(`\n`);
         return output;
     }
 
     toConsole() {
-        const reminderString = this.reminders.map((reminder) => reminder.toString());
-        const output = reminderString.join(`\n`);
+        const output = this.reminders
+                        .map((reminder) => reminder.toString())
+                        .join(`\n`);
         console.log(output);
     }
 }
