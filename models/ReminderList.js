@@ -24,7 +24,7 @@ class ReminderList {
     }
 
     toConsole() {
-        const reminderString = this.reminders.map((reminder) => toString());
+        const reminderString = this.reminders.map((reminder) => reminder.toString());
         const output = reminderString.join(`\n`);
         console.log(output);
     }
