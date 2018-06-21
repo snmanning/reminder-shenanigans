@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const chalk = require('chalk');
 
 console.log(chalk.yellow("Welcome to remindme"));
 
@@ -30,5 +31,5 @@ else {
     help();
         }
 
-console.log(chalk.bgyellow.green.italic("Ou fin! :)"));
+console.log(chalk.bgYellow.green.italic("Ou fin! :)"));
 process.exit(0);
