@@ -1,4 +1,6 @@
-console.log("Welcome to remindme");
+#!/usr/bin/env node
+
+console.log(chalk.yellow("Welcome to remindme"));
 
 const list = require('./commands/list');
 const add = require('./commands/add');
@@ -11,7 +13,7 @@ const { reminderFile } = require('./config');
 //add command where we can add a reminder to the existing list
 
 if(!fs.existsSync(reminderFile)) {
-    fs.writeFileSync(reminderFile, "");
+    fs.openSync(reminderFile, 'a');
 }
 
 const args = process.argv.slice(2);
@@ -28,5 +30,5 @@ else {
     help();
         }
 
-console.log("Ou fin! :)");
+console.log(chalk.bgyellow.green.italic("Ou fin! :)"));
 process.exit(0);
